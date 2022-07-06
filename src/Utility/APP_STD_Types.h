@@ -11,15 +11,15 @@
 /* Pointer Typedef *********************************************************************/
 #define NULL				((void *)0)
 /* Signed Number Typedef ***************************************************************/
-typedef signed char s8;
-typedef signed short int s16;
-typedef signed long int s32;
-typedef signed long long s64;
+typedef signed char 		s8;
+typedef signed short int 	s16;
+typedef signed int		 	s32;
+typedef signed long long 	s64;
 /* Unsigned Number Typedef *************************************************************/
-typedef unsigned char u8;
-typedef unsigned short int u16;
-typedef unsigned long int u32;
-typedef unsigned long long u64;
+typedef unsigned char 		u8;
+typedef unsigned short int 	u16;
+typedef unsigned int	 	u32;
+typedef unsigned long long 	u64;
 /* Floating-Point Number Typedef *******************************************************/
 typedef float f32;		// 4_Byte	6  decimal places floating point
 typedef double f64;		// 8_Byte	14 decimal places floating point

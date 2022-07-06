@@ -33,19 +33,4 @@ s16 Buff_Define_u8BufferDataLength(u8 *Buffer)
 	return Ls16FrameLength;
 }
 
-s8 Buff_Define_u8RxFlags(u8 *Buffer, u8 Lu8ActualLength)
-{
-	s8 Ls16FrameFlag =0;
-	if((0x7E == Buffer[0]))
-	{
-		Ls16FrameFlag++;
-		if(0x7E == Buffer[Lu8ActualLength-1])
-		{
-			Ls16FrameFlag++;
-		}else{	}
-	}
-	else{
-		Ls16FrameFlag =-1;
-	}
-	return Ls16FrameFlag;
-}
+

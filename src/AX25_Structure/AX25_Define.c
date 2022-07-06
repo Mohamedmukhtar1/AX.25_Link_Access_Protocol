@@ -7,37 +7,69 @@
 
 #include "AX25_Interface.h"
 
-void AXStructed_vFrame(AX25_Header *FrameHeader, u8 *Buffer)
+u8 AXDefineFlags_u8Validation(u8 *Buffer, u8 Lu8ActualLength)
+{
+	s8 Ls16FrameFlag =0;
+	if((0x7E == Buffer[0]))
+	{
+		Ls16FrameFlag++;
+		if(0x7E == Buffer[Lu8ActualLength-1])
+		{
+			Ls16FrameFlag++;
+		}else{	}
+	}
+	else{
+		Ls16FrameFlag =9;
+	}
+	return Ls16FrameFlag;
+}
+
+u8 AXDestinationAddress_u8Validation(AX25_Header *FrameHeader, u8 *DestinAddress)
 {
 	u8 i =0;
-	u8 j =0;
+	u8 Lu8CheckOkay =0;
 	if(FrameHeader != NULL)
 	{
-		FrameHeader->StartFlag = Buffer[0];
-		for(i=1; i<=7; i++,j++)
+		if(FrameHeader->HeaderAccess.DestinAddress.SSID == DestinAddress[6])
 		{
-			if(j<6)
+			for(i=0; i<=5; i++)
 			{
-				FrameHeader->DestinAddress.C[i-1] = Buffer[i];
-			}
-			else{
-				FrameHeader->DestinAddress.SSID =Buffer[i];
+				if(FrameHeader->HeaderAccess.DestinAddress.C[i] == DestinAddress[i])
+				{
+					Lu8CheckOkay =1;
+				}
+				else{
+					Lu8CheckOkay =0;
+					break;
+				}
 			}
 		}
-		for(i=8; i<=14; i++,j++)
-		{
-			if(j<13)
-			{
-				FrameHeader->SourceAddress.C[i-8] = Buffer[i];
-			}
-			else{
-				FrameHeader->SourceAddress.SSID =Buffer[i];
-			}
-		}
-		j++;
-		FrameHeader->ControlField = Buffer[j];
-		j++;
-		FrameHeader->Protocol_ID = Buffer[j];
 	}
 	else{/*ERROR*/}
+	return Lu8CheckOkay;
+}
+
+u8 AXSourceAddress_u8Validation(AX25_Header *FrameHeader, u8 *SourceAddress)
+{
+	u8 i =0;
+	u8 Lu8CheckOkay =0;
+	if(FrameHeader != NULL)
+	{
+		if(FrameHeader->HeaderAccess.SourceAddress.SSID == SourceAddress[6])
+		{
+			for(i=0; i<=5; i++)
+			{
+				if(FrameHeader->HeaderAccess.SourceAddress.C[i] == SourceAddress[i])
+				{
+					Lu8CheckOkay =1;
+				}
+				else{
+					Lu8CheckOkay =0;
+					break;
+				}
+			}
+		}
+	}
+	else{/*ERROR*/}
+	return Lu8CheckOkay;
 }

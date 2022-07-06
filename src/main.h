@@ -19,6 +19,7 @@
 #include "../src/CommunicationBuffer/ProcessingBuffer_Interface.h"
 
 /***************_AX25_INCLUDES_****************************/
+#include "../src/AX25_Structure/AX25.h"
 #include "../src/AX25_Structure/AX25_Interface.h"
 
 /***************_main.c_FUNCTION_PROTOTYPE_****************/

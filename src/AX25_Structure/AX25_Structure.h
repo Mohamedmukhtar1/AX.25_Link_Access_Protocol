@@ -54,16 +54,16 @@ typedef union {
 	u8 ControlAccess;
 } Unnum8_FrameControl_ut;
 
-typedef struct
-{
+typedef union {
+	struct {
 	u8 StartFlag ;
-	u8 Protocol_ID ;
-	u8 ControlField ;
 	DestinAds_st DestinAddress ;
 	SourceAds_st SourceAddress ;
+	u8 Protocol_ID ;
+	u8 ControlField ;
+	}HeaderAccess;
+	u8 BufferAccess[17];
 } AX25_Header;
-
-
 
 
 #endif /* AX25_STRUCTURE_H_ */

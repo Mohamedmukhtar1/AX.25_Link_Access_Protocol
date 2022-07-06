@@ -7,4 +7,8 @@
 
 #include "AX25_Interface.h"
 
-void AXStructed_vFrame(AX25_Header *FrameHeader, u8 *Buffer)
+void AXExecute_vFrameAddress(u8 Lu8DestFlag, u8 Lu8SorcFlag)
+{
+
+
+}

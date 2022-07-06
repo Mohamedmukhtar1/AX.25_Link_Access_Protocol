@@ -15,5 +15,17 @@
 
 #define UNDEFINED_LENGTH	-2
 
+typedef union {
+	struct {
+	u32 Flags		  :3;
+	u32 UniteDevice   :4;
+	u32 SourceDevice  :8;
+	u32 ControlDefine :4;
+	u32 PIDDefine	  :2;
+	u32 AckCRC		  :1;
+	u32 Reserved      :10;
+	}InformationAccess;
+	u32 ValueAccess;
+} AX25Information_ut;
 
 #endif /* AX25_PREDEFINE_H_ */

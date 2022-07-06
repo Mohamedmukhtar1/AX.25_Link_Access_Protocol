@@ -28,15 +28,27 @@ void AXDelete_vAllocatedFrame(AX25_Header *Frame)
 void AXConfig_vFrame(AX25_Header *Frame, u8 *Destin, u8 *Source, u8 Control, u8 PID)
 {
 	u8 i=0;
-	Frame->StartFlag = 0x7E;
-	Frame->ControlField = Control;
-	Frame->Protocol_ID = PID;
+	Frame->HeaderAccess.StartFlag = 0x7E;
+	Frame->HeaderAccess.ControlField = Control;
+	Frame->HeaderAccess.Protocol_ID = PID;
 	for(i=0; i<=5; i++)
 	{
-		Frame->DestinAddress.C[i] = Destin[i];
-		Frame->SourceAddress.C[i] = Source[i];
+		Frame->HeaderAccess.DestinAddress.C[i] = Destin[i];
+		Frame->HeaderAccess.SourceAddress.C[i] = Source[i];
 	}
-	Frame->DestinAddress.SSID = Destin[i];
-	Frame->SourceAddress.SSID = Source[i];
+	Frame->HeaderAccess.DestinAddress.SSID = Destin[i];
+	Frame->HeaderAccess.SourceAddress.SSID = Source[i];
 }
 
+void AXStructe_vFrame(AX25_Header *FrameHeader, u8 *Buffer)
+{
+	u8 i =0;
+	if(FrameHeader != NULL)
+	{
+		for(i=0; i<=16; i++)
+		{
+			FrameHeader->BufferAccess[i] = Buffer[i];
+		}
+	}
+	else{/*ERROR*/}
+}

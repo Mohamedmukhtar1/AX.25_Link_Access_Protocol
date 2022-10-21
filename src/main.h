@@ -23,7 +23,7 @@
 #include "../src/AX25_Structure/AX25_Interface.h"
 
 /***************_main.c_FUNCTION_PROTOTYPE_****************/
-void APrintFrameHeaderInfo(AX25_Header *Frame);
+void APrintFrameHeaderInfo(AX25_Header_ut *Frame);
 void ReceiverSimulator (u8 *StoreBuffer, u8 *RxBuffer, u8 Length);
 void APrintRxBufferInfo(u8 *Frame, u8 Length);
 

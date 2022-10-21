@@ -28,4 +28,52 @@ typedef union {
 	u32 ValueAccess;
 } AX25Information_ut;
 
+typedef union {
+	struct {
+	u8 ISO8208X25PLP   ;
+	u8 COMTCPIPPCK     ;
+	u8 UNCOMTCPIPPCK   ;
+	u8 SEGFRAG         ;
+	u8 TEXDATAPROTOCOL ;
+	u8 LINKQPROTOCOL   ;
+	u8 APPLETALK       ;
+	u8 APPLETALKARP    ;
+	u8 APRAINPROTOCOL  ;
+	u8 APRAADDRESO     ;
+	u8 FLEXNET         ;
+	u8 NETROM          ;
+	u8 NOL3PROTOCOL    ;
+	u8 ESCC            ;
+	}ControlAccess;
+	u8 ControlArray[14];
+} IframeControl_ut;
+
+typedef union {
+	struct {
+	u8 SRR    ;
+	u8 SRNR   ;
+	u8 SREJ   ;
+	u8 SSREJ  ;
+	}ControlAccess;
+	u8 ControlArray[4];
+} SframeControl_ut;
+
+typedef union {
+	struct {
+	u8 SABM_CMD  ;
+	u8 SABME_CMD ;
+	u8 DISC_CMD  ;
+	u8 XID_CMD   ;
+	u8 XID_RES   ;
+	u8 TEST_CMD  ;
+	u8 TEST_RES  ;
+	u8 UI_CMD    ;
+	u8 UI_RES    ;
+	u8 UACK_RES  ;
+	u8 FRMR_RES  ;
+	u8 DM_RES    ;
+	}ControlAccess;
+	u8 ControlArray[4];
+} UframeControl_ut;
+
 #endif /* AX25_PREDEFINE_H_ */

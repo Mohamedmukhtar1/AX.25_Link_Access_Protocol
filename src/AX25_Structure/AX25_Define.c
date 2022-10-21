@@ -24,7 +24,7 @@ u8 AXDefineFlags_u8Validation(u8 *Buffer, u8 Lu8ActualLength)
 	return Ls16FrameFlag;
 }
 
-u8 AXDestinationAddress_u8Validation(AX25_Header *FrameHeader, u8 *DestinAddress)
+u8 AXDestinationAddress_u8Validation(AX25_Header_ut *FrameHeader, u8 *DestinAddress)
 {
 	u8 i =0;
 	u8 Lu8CheckOkay =0;
@@ -49,7 +49,32 @@ u8 AXDestinationAddress_u8Validation(AX25_Header *FrameHeader, u8 *DestinAddress
 	return Lu8CheckOkay;
 }
 
-u8 AXSourceAddress_u8Validation(AX25_Header *FrameHeader, u8 *SourceAddress)
+u8 AXSourceAddress_u8Validation(AX25_Header_ut *FrameHeader, u8 *SourceAddress)
+{
+	u8 i =0;
+	u8 Lu8CheckOkay =0;
+	if(FrameHeader != NULL)
+	{
+		if(FrameHeader->HeaderAccess.SourceAddress.SSID == SourceAddress[6])
+		{
+			for(i=0; i<=5; i++)
+			{
+				if(FrameHeader->HeaderAccess.SourceAddress.C[i] == SourceAddress[i])
+				{
+					Lu8CheckOkay =1;
+				}
+				else{
+					Lu8CheckOkay =0;
+					break;
+				}
+			}
+		}
+	}
+	else{/*ERROR*/}
+	return Lu8CheckOkay;
+}
+
+u8 AXControl_u8Validation(AX25_Header_ut *FrameHeader, u8 *SourceAddress)
 {
 	u8 i =0;
 	u8 Lu8CheckOkay =0;

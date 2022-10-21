@@ -40,11 +40,12 @@ int main(void)
 
 	// s8 AXDefineFlags_s8Validation(u8 *Buffer, u8 Lu8ActualLength)
 
-	AX25_Header *ptrReceiverHeader;
+	AX25_Header_ut *ptrReceiverHeader;
 	ptrReceiverHeader = AXConvertBuffertoAXHeader(Gu8_ReceiverBuffer);
 	APrintFrameHeaderInfo(ptrReceiverHeader);
 	printf("Information = 0x%X\n",AXGetInformation(ptrReceiverHeader));
 
+	AXMissionExecute();
 
 
 	//printf("DeviceIDConfirmation Valid = %d\n", DeviceIDConfirmation);
@@ -90,7 +91,7 @@ void APrintRxBufferInfo(u8 *Frame, u8 Length)
 }
 
 
-void APrintFrameHeaderInfo(AX25_Header *Frame)
+void APrintFrameHeaderInfo(AX25_Header_ut *Frame)
 {
 	u8 i=0;
 	printf("\n\n\t\tStartFlag = 0x%X >>>>>>>>>>>>>>>>>>>>>>>>>\n", Frame->HeaderAccess.StartFlag);

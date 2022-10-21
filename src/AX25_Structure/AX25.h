@@ -16,8 +16,12 @@
 #include "AX25_Structure.h"
 #include "AX25_PreDefine.h"
 
-AX25_Header* AXConvertBuffertoAXHeader(u8 *Lu8_ReceiverBuffer);
-u32 AXGetInformation(AX25_Header *AxReceiverHeader);
+/***************_AX25_Sheet_INCLUDES_**********************/
+#include "ISU_CtrlPID_Field.h"
+
+AX25_Header_ut* AXConvertBuffertoAXHeader(u8 *Lu8_ReceiverBuffer);
+u32 AXGetInformation(AX25_Header_ut *AxReceiverHeader);
+u8 AXMissionExecute(void);
 
 
 

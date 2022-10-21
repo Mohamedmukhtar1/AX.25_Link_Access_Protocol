@@ -14,9 +14,10 @@ static u8 Gu8Device_1_Address[7]  = {0x16, 0xFF, 0xB3, 0xAA, 0xAB, 0x11, 0x11};
 static u8 Gu8Device_2_Address[7]  = {0x16, 0xFF, 0xB3, 0xAA, 0x21, 0x21, 0x21};
 static u8 Gu8Device_3_Address[7]  = {0x16, 0xFF, 0xB3, 0xAA, 0x35, 0x35, 0x35};
 
-AX25_Header* AXConvertBuffertoAXHeader(u8 *Lu8ReceiverBuffer)
+
+AX25_Header_ut* AXConvertBuffertoAXHeader(u8 *Lu8ReceiverBuffer)
 {
-	AX25_Header *ptrReceiverHeader;
+	AX25_Header_ut *ptrReceiverHeader;
 	ptrReceiverHeader = AXAllocate_axheaderFrame();
 	if(ptrReceiverHeader != NULL)
 	{
@@ -26,7 +27,7 @@ AX25_Header* AXConvertBuffertoAXHeader(u8 *Lu8ReceiverBuffer)
 	return ptrReceiverHeader;
 }
 
-u32 AXGetInformation(AX25_Header *AxReceiverHeader)
+u32 AXGetInformation(AX25_Header_ut *AxReceiverHeader)
 {
 	if(AXDestinationAddress_u8Validation(AxReceiverHeader, Gu8UniteDeviveAddress))
 	{
@@ -53,6 +54,12 @@ u32 AXGetInformation(AX25_Header *AxReceiverHeader)
 	return Information.ValueAccess;
 }
 
+u8 AXMissionExecute(void)
+{
+	AXExecute_vFrameAddress(&Information);
 
 
+
+	return 1;
+}
 

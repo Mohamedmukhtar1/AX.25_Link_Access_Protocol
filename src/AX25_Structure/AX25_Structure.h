@@ -63,7 +63,7 @@ typedef union {
 	u8 ControlField ;
 	}HeaderAccess;
 	u8 BufferAccess[17];
-} AX25_Header;
+} AX25_Header_ut;
 
 
 #endif /* AX25_STRUCTURE_H_ */
